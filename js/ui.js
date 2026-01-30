@@ -2,6 +2,31 @@
     const page = document.querySelector(".page-content");
     const toggle = document.getElementById("themeToggle");
 
+    document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("a[href]");
+
+        links.forEach(link => {
+            const href = link.getAttribute("href");
+
+            if (!href || href.startsWith("#") || href.startsWith("http")) return;
+
+            link.addEventListener("click", e => {
+                e.preventDefault();
+
+                const direction =
+                    link.classList.contains("nav-back") ? "left" : "right";
+
+                document.body.classList.add(
+                    direction === "right" ? "slide-out-left" : "slide-out-right"
+                );
+
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+    });
+
     // --- SAFETY CHECK ---
     if (!page || !toggle) {
         console.warn("Theme toggle or page-content missing");

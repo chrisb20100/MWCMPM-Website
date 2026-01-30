@@ -60,3 +60,76 @@ button {
     color: white;
     font-size: 15px;
 }
+/* iOS-style page transitions */
+.page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    animation-duration: 0.35s;
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+    animation-fill-mode: both;
+}
+
+.slide-in-right {
+    animation-name: slideInRight;
+}
+
+.slide-in-left {
+    animation-name: slideInLeft;
+}
+
+.slide-out-left {
+    animation-name: slideOutLeft;
+}
+
+.slide-out-right {
+    animation-name: slideOutRight;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-40%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(40%);
+        opacity: 0;
+    }
+}
